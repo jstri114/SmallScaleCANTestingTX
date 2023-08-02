@@ -2,12 +2,17 @@
 
 #include <CAN.h>
 
+SPIClass.setMOSI(11);
+	//void setMISO(uint8_t pin);
+	//void setSCK(uint8_t pin);
+
+
 void setup() {
   Serial.begin(9600);
   while (!Serial);
-
+int pin = MCP2515Class::_csPin;
   Serial.println("CAN Sender");
-
+  Serial.print(pin);
   // start the CAN bus at 500 kbps
   if (!CAN.begin(500E3)) {
     Serial.println("Starting CAN failed!");
